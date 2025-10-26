@@ -259,7 +259,7 @@ export default function AudioSection() {
             transition={{ delay: 0.2 }}
             className="lg:col-span-1"
           >
-            <div className="bg-white rounded-3xl p-6 md:p-8 shadow-2xl sticky top-24">
+            <div className="bg-white rounded-3xl p-4 md:p-6 lg:p-8 shadow-2xl lg:sticky lg:top-24">
               {/* Album Art */}
               <motion.div
                 animate={{
@@ -270,20 +270,20 @@ export default function AudioSection() {
                   repeat: isPlaying ? Infinity : 0,
                   ease: "linear",
                 }}
-                className={`w-full aspect-square rounded-3xl bg-gradient-to-br ${getTrackColor(track.category)} mb-6 flex items-center justify-center shadow-lg`}
+                className={`w-full aspect-square max-w-xs mx-auto rounded-3xl bg-gradient-to-br ${getTrackColor(track.category)} mb-4 md:mb-6 flex items-center justify-center shadow-lg`}
               >
-                <Music className="w-16 h-16 md:w-24 md:h-24 text-white" />
+                <Music className="w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24 text-white" />
               </motion.div>
 
               {/* Track Info */}
-              <div className="text-center mb-6">
-                <h3 className="text-xl md:text-2xl text-gray-800 mb-2 line-clamp-2">{track.title}</h3>
-                <p className="text-purple-600 mb-1">{track.artist}</p>
-                <p className="text-sm text-gray-500">{track.category}</p>
+              <div className="text-center mb-4 md:mb-6">
+                <h3 className="text-lg md:text-xl lg:text-2xl text-gray-800 mb-1 md:mb-2 line-clamp-2">{track.title}</h3>
+                <p className="text-sm md:text-base text-purple-600 mb-1">{track.artist}</p>
+                <p className="text-xs md:text-sm text-gray-500">{track.category}</p>
               </div>
 
               {/* Progress Bar */}
-              <div className="mb-6">
+              <div className="mb-4 md:mb-6">
                 <div className="relative mb-2">
                   <Slider
                     value={[progressPercentage]}
@@ -322,14 +322,15 @@ export default function AudioSection() {
               </div>
 
               {/* Controls */}
-              <div className="flex items-center justify-center gap-3 md:gap-4 mb-6">
+              <div className="flex items-center justify-center gap-2 md:gap-3 lg:gap-4 mb-4 md:mb-6">
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <Button
                     onClick={prevTrack}
                     variant="outline"
-                    className="rounded-full w-10 h-10 md:w-12 md:h-12 border-2 border-purple-300"
+                    size="sm"
+                    className="rounded-full w-12 h-12 md:w-14 md:h-14 border-2 border-purple-300 p-0"
                   >
-                    <SkipBack className="w-4 h-4 md:w-5 md:h-5" />
+                    <SkipBack className="w-5 h-5 md:w-6 md:h-6" />
                   </Button>
                 </motion.div>
 
@@ -339,12 +340,12 @@ export default function AudioSection() {
                 >
                   <Button
                     onClick={playPause}
-                    className="rounded-full w-14 h-14 md:w-16 md:h-16 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white shadow-lg"
+                    className="rounded-full w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white shadow-lg p-0"
                   >
                     {isPlaying ? (
-                      <Pause className="w-6 h-6 md:w-7 md:h-7" />
+                      <Pause className="w-7 h-7 md:w-8 md:h-8" />
                     ) : (
-                      <Play className="w-6 h-6 md:w-7 md:h-7 ml-1" />
+                      <Play className="w-7 h-7 md:w-8 md:h-8 ml-0.5" />
                     )}
                   </Button>
                 </motion.div>
@@ -353,15 +354,16 @@ export default function AudioSection() {
                   <Button
                     onClick={nextTrack}
                     variant="outline"
-                    className="rounded-full w-10 h-10 md:w-12 md:h-12 border-2 border-purple-300"
+                    size="sm"
+                    className="rounded-full w-12 h-12 md:w-14 md:h-14 border-2 border-purple-300 p-0"
                   >
-                    <SkipForward className="w-4 h-4 md:w-5 md:h-5" />
+                    <SkipForward className="w-5 h-5 md:w-6 md:h-6" />
                   </Button>
                 </motion.div>
               </div>
 
               {/* Volume */}
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
                 <motion.div
                   animate={{
                     scale: volume[0] > 50 ? [1, 1.1, 1] : 1
@@ -371,9 +373,9 @@ export default function AudioSection() {
                     repeat: volume[0] > 50 ? Infinity : 0
                   }}
                 >
-                  <Volume2 className="w-5 h-5 text-gray-600 flex-shrink-0" />
+                  <Volume2 className="w-4 h-4 md:w-5 md:h-5 text-gray-600 flex-shrink-0" />
                 </motion.div>
-                <div className="flex-1 relative">
+                <div className="flex-1 relative min-w-0">
                   <Slider
                     value={volume}
                     onValueChange={setVolume}
@@ -381,7 +383,7 @@ export default function AudioSection() {
                     step={1}
                   />
                   {/* Volume level indicator */}
-                  <div className="flex gap-0.5 mt-1">
+                  <div className="hidden md:flex gap-0.5 mt-1">
                     {[...Array(10)].map((_, i) => (
                       <motion.div
                         key={i}
@@ -403,7 +405,7 @@ export default function AudioSection() {
                   </div>
                 </div>
                 <motion.span 
-                  className="text-sm text-gray-600 w-10"
+                  className="text-xs md:text-sm text-gray-600 w-8 md:w-10 text-right flex-shrink-0"
                   key={volume[0]}
                   initial={{ scale: 1.2 }}
                   animate={{ scale: 1 }}
@@ -415,10 +417,10 @@ export default function AudioSection() {
               {/* Download Button */}
               <Button 
                 onClick={() => handleDownload(track)}
-                className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white rounded-full"
+                className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white rounded-full py-5 md:py-6"
               >
-                <Download className="w-5 h-5 mr-2" />
-                Скачать трек
+                <Download className="w-4 h-4 md:w-5 md:h-5 mr-2" />
+                <span className="text-sm md:text-base">Скачать трек</span>
               </Button>
 
               {/* Hidden Audio Element */}
@@ -514,12 +516,12 @@ export default function AudioSection() {
                         <motion.div
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
-                          className="flex items-center gap-1 mt-4 h-8"
+                          className="flex items-center gap-0.5 md:gap-1 mt-3 md:mt-4 h-6 md:h-8"
                         >
-                          {[...Array(40)].map((_, i) => (
+                          {[...Array(30)].map((_, i) => (
                             <motion.div
                               key={i}
-                              className={`flex-1 bg-gradient-to-t ${getTrackColor(audioTrack.category)} rounded-full`}
+                              className={`flex-1 bg-gradient-to-t ${getTrackColor(audioTrack.category)} rounded-full min-w-[2px]`}
                               animate={{
                                 height: [
                                   `${20 + Math.random() * 80}%`,

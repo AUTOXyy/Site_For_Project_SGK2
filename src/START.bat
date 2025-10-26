@@ -1,5 +1,4 @@
 @echo off
-chcp 65001 > nul
 cls
 
 echo.
@@ -45,7 +44,7 @@ echo  Installing dependencies...
 echo ====================================================================
 echo.
 call npm install
-if %errorlevel% == 0 (
+if %errorlevel% equ 0 (
     echo.
     echo OK: Installation complete!
 ) else (
@@ -87,7 +86,7 @@ echo ====================================================================
 echo.
 call npm run build
 echo.
-if %errorlevel% == 0 (
+if %errorlevel% equ 0 (
     echo OK: Build successful! Files in dist/ folder
 ) else (
     echo ERROR: Build failed!
@@ -134,8 +133,14 @@ goto MENU
 :README
 echo.
 echo ====================================================================
-echo  Opening README.md...
+echo  README - Documentation
 echo ====================================================================
+echo.
+echo Documentation available in README.md
+echo Check also:
+echo   - INSTRUCTIONS_FOR_USERS.md
+echo   - INSTRUCTIONS_FOR_ADMIN.md  
+echo   - INSTRUCTIONS_FOR_DEVELOPERS.md
 echo.
 start README.md
 echo.
