@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Video as VideoIcon, Play, X, Eye, Calendar } from "lucide-react";
-import { Button } from "./ui/button";
+import { Video as VideoIcon, Play, Eye, Calendar } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";

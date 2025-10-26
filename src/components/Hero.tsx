@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { Music, Sparkles, Heart, Star, BookOpen, Image } from "lucide-react";
+import { Sparkles, Heart, Star, BookOpen, Image } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Button } from "./ui/button";
 import { pagesApi } from "../utils/supabase/client";
